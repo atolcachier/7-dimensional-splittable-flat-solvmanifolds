@@ -399,3 +399,22 @@ Explicitly, the 123 subgroups are:
           [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, -1, -1 ], [ 0, 0, 0, 0, 1, 0 ]
          ] ] ];;
 
+Checking that the corresponding lattices are non-isomorphic.
+First, we construct the lattices G[i]:=Z \ltimes_{conj[i][1]} \Z^6, for 1<= i<= 123:
+
+F:=FreeGroup("a","b","c","d","e","f","t");
+AssignGeneratorVariables(F);
+A:=[];
+for i in [1..123] do
+A[i]:=conj6[i][1]^-1;
+od;
+G:=[];
+for i in [1..123] do
+G[i]:=F/[Comm(a,b),Comm(a,c), Comm(a,d),Comm(a,e),Comm(a,f),Comm(b,c),Comm(b,d),Comm(b,e),Comm(b,f),Comm(c,d),Comm(c,e),Comm(c,f),Comm(d,e),Comm(d,f),Comm(e,f),
+a^t*(a^A[i][1,1]*b^A[i][2,1]*c^A[i][3,1]*d^A[i][4,1]*e^A[i][5,1]*f^A[i][6,1])^-1, 
+b^t*(a^A[i][1,2]*b^A[i][2,2]*c^A[i][3,2]*d^A[i][4,2]*e^A[i][5,2]*f^A[i][6,2])^-1, 
+c^t*(a^A[i][1,3]*b^A[i][2,3]*c^A[i][3,3]*d^A[i][4,3]*e^A[i][5,3]*f^A[i][6,3])^-1, 
+d^t*(a^A[i][1,4]*b^A[i][2,4]*c^A[i][3,4]*d^A[i][4,4]*e^A[i][5,4]*f^A[i][6,4])^-1, 
+e^t*(a^A[i][1,5]*b^A[i][2,5]*c^A[i][3,5]*d^A[i][4,5]*e^A[i][5,5]*f^A[i][6,5])^-1,   
+f^t*(a^A[i][1,6]*b^A[i][2,6]*c^A[i][3,6]*d^A[i][4,6]*e^A[i][5,6]*f^A[i][6,6])^-1];
+od;
