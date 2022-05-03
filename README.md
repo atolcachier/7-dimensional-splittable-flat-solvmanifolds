@@ -1,5 +1,5 @@
-# Finite-subgroups-of-SL-6-Z- 
 Written to be used in GAP
+
 Download cryst6 from https://drive.google.com/drive/u/1/folders/1E8PKEZ6mAM9oCUyJt-A7u76fJdZE3trH and copy all the text from the .txt in GAP (I extracted the .txt's from https://www.math.kyoto-u.ac.jp/~yamasaki/Algorithm/RatProbAlgTori/crystdat.html and gave them a format to be copied in GAP without changes)
 
 We check the cyclic subgroups of matrices with determinant equal to one:
