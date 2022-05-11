@@ -1,4 +1,4 @@
-/* Script written in GAP to extract from the finite subgroups of GL(6,Z) the 2-generated abelian subgroups of SL(6,Z) which give rise to a lattice
+#Script written in GAP to extract from the finite subgroups of GL(6,Z) the 2-generated abelian subgroups of SL(6,Z) which give rise to a lattice
 of a flat Lie group R^2 \ltimes \R^5 and distinguish the corresponding lattices /*
 
 /*Download cryst5 from https://drive.google.com/drive/folders/1E8PKEZ6mAM9oCUyJt-A7u76fJdZE3trH?usp=sharing and copy all the text from the .txt in GAP 
