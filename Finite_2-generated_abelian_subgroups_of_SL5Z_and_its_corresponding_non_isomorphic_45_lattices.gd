@@ -42,5 +42,3 @@ for j in [(i+1)..Size(indexes2)] do
 if indexes2[i]=indexes2[j] then Print([i,j], " ");fi;od;od;
 #
 # Since there is nothing printed by this command, it means that 45 lattices are pairwise non-isomorphic.
-#
-#
