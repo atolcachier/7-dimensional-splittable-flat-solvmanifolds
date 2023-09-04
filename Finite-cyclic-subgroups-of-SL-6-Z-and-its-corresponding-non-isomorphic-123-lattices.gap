@@ -1,14 +1,16 @@
-# Script written to extract from the list of finite subgroups of GL(6,Z) the cyclic subgroups of SL(6,Z) and distinguish the corresponding lattices Z \ltimes \Z^5. Script written in GAP 
+# Script written to extract from the list of finite subgroups of GL(6,Z) the cyclic subgroups of SL(6,Z) and distinguish the corresponding lattices Z \ltimes \Z^5. 
+# Script written mostly in GAP, but also for checking integral conjugacy between matrices we needed MAGMA. 
 #
 # Download cryst6 from https://drive.google.com/drive/u/1/folders/1E8PKEZ6mAM9oCUyJt-A7u76fJdZE3trH and copy all the text from the .txt in GAP 
-#(I extracted the .txt's from https://www.math.kyoto-u.ac.jp/~yamasaki/Algorithm/RatProbAlgTori/crystdat.html and gave them a format to copy into GAP without changes) 
+# (I extracted the .txt's from https://www.math.kyoto-u.ac.jp/~yamasaki/Algorithm/RatProbAlgTori/crystdat.html and gave them a format to copy into GAP 
+# without changes) 
 #
 # We check the cyclic subgroups of matrices with determinant equal to one 
 #
 lattices6:=[]; 
 for i in [1..85308] do if IsCyclic(Group(cryst6[i]))=true and Determinant(GeneratorsOfGroup(Group(cryst6[i]))[1])=1 then Append(lattices6,[cryst6[i]]); fi; od;
 #
-# For saving time, also we can put 
+# To save time, here is the list: 
 #
 lattices6:=[ [ [ [ 1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 ],
           [ 0, 0, 0, 1, 0, 0 ], [ 0, 0, 0, 0, -1, 0 ], [ 0, 0, 0, 0, 0, -1 ]
@@ -379,12 +381,23 @@ lattices6:=[ [ [ [ 1, 0, 0, 0, 0, 0 ], [ 0, 1, 0, 0, 0, 0 ], [ 0, 0, 1, 0, 0, 0 
   [ [ [ 0, 1, 0, 0, 0, 0 ], [ 0, 0, -1, 0, 0, 0 ], [ 0, 0, 0, 1, 0, 0 ],
           [ 1, 0, 0, 0, 0, 0 ], [ 0, 0, 0, 0, -1, -1 ], [ 0, 0, 0, 0, 1, 0 ]
          ] ] ];;
-
 #
 # One can check that there are 123 subgroups computing  
 Size(lattices6);
 #
-# Now we check that the corresponding lattices are non-isomorphic. First, we construct the lattices G[i]:=Z \ltimes_{lattices6[i][1]} \Z^6, for 1<= i<= 123: 
+#
+# Now we check (using MAGMA) that, for each of the 123 subgroups, every generator of the subgroup at issue is integrally conjugate to the generator we obtained.
+#
+ for i in [1..123] do 
+ for j in [2..Order(Matrix(lattices6[i][1]))-1] do if Order(Matrix(lattices6[i][1])^j) eq Order(Matrix(lattices6[i][1])) then 
+if [IsGLZConjugate(Matrix(lattices6[i][1]),Matrix(lattices6[i][1])^j)][1] eq false 
+then printf "%o  ", [i,j]; end if; end if;end for; end for;
+#
+# Since this print nothing, it means that any generator of the subgroup we are considering (for each of the 123 subgroups) is integrally conjugate to the generator 
+# above, so the corresponding lattices are isomorphic.
+#
+# Now we check that the corresponding lattices to the 123 generators of the different subgroups
+# are non-isomorphic. First, (again in GAP) we construct the lattices G[i]:=Z \ltimes_{lattices6[i][1]} \Z^6, for 1<= i<= 123: 
 #
 F:=FreeGroup("a","b","c","d","e","f","t"); 
 AssignGeneratorVariables(F); 
