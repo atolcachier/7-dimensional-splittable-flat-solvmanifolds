@@ -298,9 +298,9 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
   [0,1,1,0], [0,1,1,1], [1,0,1,1],
 # which corresponds to {A,B}->{B,A}, {A,B}->{B,AB} and {A,B}->{A,AB}.
 #
-# For i in [10..16], A^{-1}=A^3 and in each case the outcome are the following:
+# For i in [10..16], A^{-1}=A^3 and in each case the outcome is the following:
 
-[ 0, 1, 1, 0 ] {A,B},
+[ 0, 1, 1, 0 ] {A,B}->{B,A},
 [ 0, 1, 1, 1 ] {A,B}->{B,AB}, [ 1, 0, 1, 1 ] {A,B}->{A,AB}
 [ 1, 0, 2, 1 ] {A,AB}->{A,A^2 B}, [ 1, 1, 2, 1 ] {A,AB}->{AB,A^2 B} 
 [ 1, 0, 3, 1 ] {A,AB}->{A,A^3 B}, [ 1, 1, 3, 0 ] {A,AB}->{AB,A^3}
@@ -308,6 +308,42 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 [ 3, 0, 3, 1 ] {B,A^3}->{A^3,A^3B}, [ 0, 1, 3, 1 ]  {B,A^3}->{B,A^3B},
 [ 2, 1, 3, 0 ] {A,A^2 B}->{A^2 B, A^3}, 
 [ 2, 1, 3, 1 ] {A,A^2 B}->{A^2 B, A^3 B}. 
+
+# For i in [17..21], A^{-1}=A^3 and B^{-1}=B^3, and in each case the outcome is the following:
+
+[ 0, 1, 1, 0 ] {A,B}->{B,A}
+[ 0, 1, 1, 1 ] {A,B}->{B,AB}     [ 0, 1, 1, 2 ] {B,AB} -> {B,AB^2}  [ 0, 1, 1, 3 ] {B,AB^2} -> {B,AB^3} 
+                                 [ 1, 1, 1, 2 ] {B,AB} -> {AB,AB^2} [ 1, 1, 2, 3 ] {AB,AB^2} -> {AB,A^2B^3}
+
+[ 1, 0, 1, 1 ] {A,B}->{A,AB}     [ 1, 0, 2, 1 ] {A,AB} -> {A,A^2B}   [ 1, 0, 3, 1 ] {A,A^2B} -> {A,A^3B}
+                                 [ 1, 1, 2, 1 ] {A,AB} -> {AB, A^2B} [ 1, 1, 3, 2 ] {AB,A^2B} -> {AB,A^3B^2}
+
+[ 0, 3, 1, 0 ] {A,B}->{B^3,A} [ 0, 3, 1, 3] {B^3,A} ->{B^3, AB^3} [ 0, 3, 1, 2 ] {B^3,AB^3} ->{B^3,AB^2} [ 0, 3, 1, 1] {B^3,AB^2}->{B^3,AB}  (since B^6=B^2, B^5=B)
+[ 1, 0, 1, 3 ] {A,B^3}->{A,AB^3} [ 1, 0, 2, 3 ] {A,AB^3}->{A,A^2B^3} [ 1, 0, 3, 3 ] {A,A^2B^3}->{A,A^3B^3}
+
+[ 0, 1, 3, 0 ] {A,B}->{B,A^3} [ 0, 1, 3, 1 ] {B,A^3}->{B,A^3B} [ 0, 1, 3, 2 ] {B,A^3B}->{B,A^3B^2} [ 0, 1, 3, 3 ] {B,A^3B^2}->{B,A^3B^3}
+
+[ 0, 3, 3, 0 ] {A,B}->{B^3,A^3} [ 0, 3, 3, 3 ] {B^3,A^3}->{B^3,A^3B^3} [ 0, 3, 3, 2 ] {B^3,A^3B^3}->{B^3,A^3B^2} [ 0, 3, 3, 1 ] {B^3,A^3B} (since B^6=B^2, B^5=B)  
+
+
+ [ 1, 2, 1, 3 ]
+    [ 1, 2, 2, 1 ] [ 1, 2, 2, 3 ] [ 1, 3, 2, 1 ] [ 1, 3, 2, 3 ]
+  [ 1, 1, 3, 0 ]  [ 1, 2, 3, 1 ] [ 1, 2, 3, 3 ] [ 1, 3, 3, 0 ] [ 1, 3, 3, 2 ] [ 2, 1, 3, 0 ] [ 2, 1, 3, 1 ] [ 2, 1, 3, 2 ] [ 2, 1, 3, 3 ]
+[ 2, 3, 3, 0 ] [ 2, 3, 3, 1 ] [ 2, 3, 3, 2 ] [ 2, 3, 3, 3 ] [ 3, 0, 3, 1 ] [ 3, 0, 3, 3 ] [ 3, 1, 3, 2 ] [ 3, 2, 3, 3 ]
+
+
+
+for i in [17] do
+          for j in [0..Order(lattices5[i][1])-1] do
+          for k in [0..Order(lattices5[i][1])-1] do
+          for l in [0..Order(lattices5[i][2])-1] do
+          for m in [0..Order(lattices5[i][2])-1] do
+          if Order(Group(lattices5[i][1]^j*lattices5[i][2]^l,lattices5[i][1]^k*lattices5[i][2]^m))=Order(Group(lattices5[i])) then
+          if j<k then Print([j,l,k,m], " "); 
+          elif j=k then 
+          if l<m then Print([j,l,k,m], " ");
+          fi; fi; fi; od; od; od; od; od;
+
 
 
 # Next we distinguish the 45 lattices 
