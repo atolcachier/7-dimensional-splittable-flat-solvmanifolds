@@ -261,14 +261,16 @@ lattices5:=[ [ [ [ -1, 0, 0, 0, 0 ], [ 0, -1, 0, 0, 0 ], [ 0, 0, 1, 0, 0 ],
           [ 0, -1, 0, 0, -1 ], [ 0, 0, 0, 0, 1 ] ] ] ];;
 #
 # 
-for i in [17] do
-for j in [0..Order(lattices5[i][1])-1] do
-for k in [0..Order(lattices5[i][1])-1] do
-for l in [0..Order(lattices5[i][2])-1] do
-for m in [0..Order(lattices5[i][2])-1] do
-if Order(Group(lattices5[i][1]^j*lattices5[i][2]^l,lattices5[i][1]^k*lattices5[i][2]^m))=Order(Group(lattices5[i])) then Print([i,j,l,k,m,SmithNormalFormIntegerMat
-([[j,l],[k,m]])], " "); 
-fi; od; od; od; od; od;
+          for i in [1..9] do
+          for j in [0..Order(lattices5[i][1])-1] do
+          for k in [0..Order(lattices5[i][1])-1] do
+          for l in [0..Order(lattices5[i][2])-1] do
+          for m in [0..Order(lattices5[i][2])-1] do
+          if Order(Group(lattices5[i][1]^j*lattices5[i][2]^l,lattices5[i][1]^k*lattices5[i][2]^m))=Order(Group(lattices5[i])) then
+          if j<k then Print([Order(Group(lattices5[i][1],lattices5[i][2])),i,j,l,k,m], " "); 
+          elif j=k then 
+          if l<m then Print([Order(Group(lattices5[i][1],lattices5[i][2])),i,j,l,k,m], " ");
+          fi; fi; fi; od; od; od; od; od;
 
 # Next we distinguish the 45 lattices 
 #
