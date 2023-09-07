@@ -366,6 +366,20 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
                   [ 0, 3, 3, 2 ] {B^3,A^3B^3}->{B^3,A^3B^2}  
                                 [ 0, 3, 3, 1 ] {B^3, A^3B^2} - > {B^3,A^3B} 
 
+# For i in [30..31] and i in [34..35] B^5=B^{-1} and in each case the outcome is the following:
+
+[ 0, 1, 1, 0 ] [ 0, 1, 1, 1 ] [ 0, 1, 1, 2 ] [ 0, 1, 1, 3 ] [ 0, 1, 1, 4 ] [ 0, 1, 1, 5 ]  {B,A} -> {B, AB} -> {B, AB^2} -> .. -> {B,AB^5}
+{B, A^k B} can be changed for {B^5, A^k B} so we obtain:
+[ 0, 5, 1, 0 ] [ 0, 5, 1, 1 ] [ 0, 5, 1, 2 ] [ 0, 5, 1, 3 ] [ 0, 5, 1, 4 ] [ 0, 5, 1, 5 ]   
+
+
+[ 0, 3, 1, 1 ] 
+[ 0, 3, 1, 2 ] [ 0, 3, 1, 4 ] [ 0, 3, 1, 5 ] {B,A} -> {B,AB
+[ 1, 0, 1, 1 ] [ 1, 0, 1, 5 ] 
+[ 1, 1, 1, 2 ] [ 1, 1, 1, 4 ]
+[ 1, 2, 1, 3 ] [ 1, 2, 1, 5 ] [ 1, 3, 1, 4 ] [ 1, 4, 1, 5 ]
+
+
 
 # For i in [41..45], A^{-1}=A^2, B^{-1}=B^2, and in each case the outcome is the following:
 
@@ -401,7 +415,7 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 
 
 
-for i in [41] do
+for i in [30] do
           for j in [0..Order(lattices5[i][1])-1] do
           for k in [0..Order(lattices5[i][1])-1] do
           for l in [0..Order(lattices5[i][2])-1] do
