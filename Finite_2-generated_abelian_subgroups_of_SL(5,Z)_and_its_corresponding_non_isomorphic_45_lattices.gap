@@ -367,8 +367,41 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
                                 [ 0, 3, 3, 1 ] {B^3, A^3B^2} - > {B^3,A^3B} 
 
 
+# For i in [41..45], A^{-1}=A^2, B^{-1}=B^2, and in each case the outcome is the following:
 
-for i in [17] do
+[ 0, 1, 1, 0 ] {B,A}
+[ 0, 1, 2, 0 ] {B,A} -> {B,A^2}
+         [ 0, 1, 2, 1 ] {B,A^2} -> {B, A^2B}
+                    [ 0, 1, 2, 2 ] {B,A^2B} -> {B, A^2B^2}
+
+[ 0, 1, 1, 1 ] {B,A} -> {B,AB}
+         [ 0, 1, 1, 2 ] {B,AB} -> {B,AB^2}
+                   [ 1, 0, 1, 2 ] {B,AB^2} -> {A,AB^2}
+                               [ 1, 0, 2, 2 ] {A,AB^2} -> {A,A^2B^2}
+                                           [ 0, 2, 2, 2 ] {A,A^2B^2} -> {B^2, A^2B^2}
+                                                         [ 0, 2, 2, 1 ] {B^2, A^2B^2} -> {B^2, A^2B} 
+                                                                          [ 0, 2, 2, 0 ] {B^2, A^2B} -> {B^2, A^2}
+                                                                                         [ 2, 0, 2, 2 ] {B^2, A^2} -> {A^2, A^2B^2}
+                                                                                                       [ 1, 2, 2, 0 ] {A^2, A^2B^2} -> {AB^2, A^2}
+                                                                                                                         [ 0, 2, 1, 2 ] {AB^2,A^2} -> {B^2, AB^2}
+                                                                                                                                       [ 0, 2, 1, 1 ] {B^2, AB^2} -> {B^2, AB}
+                                                                          [ 2, 0, 2, 1 ] {B^2, A^2B} -> {A^2, A^2B}
+                                                                                         [ 1, 1, 2, 1 ] {A^2, A^2B} -> {AB, A^2B}
+                                                                                         [ 1, 1, 2, 0 ] {A^2, A^2B} -> {AB, A^2}
+                                                         [ 2, 1, 2, 2 ] {B^2, A^2B^2} -> {A^2B,A^2B^2}
+                                           [ 0, 2, 1, 0 ] {A,A^2B^2} -> {B^2, A}
+                                                                      
+                               [ 1, 2, 2, 2 ] {A,AB^2} -> {AB^2, A^2B^2}
+         [ 1, 1, 1, 2 ] {B,AB} -> {AB, AB^2}
+[ 1, 0, 1, 1 ] {B,A} -> {A,AB}
+         [ 1, 0, 2, 1 ] {A,AB} -> {A,A^2B}
+ 
+
+  
+
+
+
+for i in [41] do
           for j in [0..Order(lattices5[i][1])-1] do
           for k in [0..Order(lattices5[i][1])-1] do
           for l in [0..Order(lattices5[i][2])-1] do
