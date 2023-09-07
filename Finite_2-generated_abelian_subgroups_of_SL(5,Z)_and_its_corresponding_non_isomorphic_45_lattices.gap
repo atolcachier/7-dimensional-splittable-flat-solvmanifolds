@@ -415,6 +415,7 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 
 
 
+
 [ 0, 3, 1, 2 ] [ 0, 3, 1, 5 ]  
 [ 0, 3, 3, 4 ]  [ 0, 3, 3, 1 ]
 
