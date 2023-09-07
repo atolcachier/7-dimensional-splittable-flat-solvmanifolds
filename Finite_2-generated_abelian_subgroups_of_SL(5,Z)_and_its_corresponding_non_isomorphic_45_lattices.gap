@@ -290,8 +290,8 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 # \Z^2\ltimes_{B,A} \Z^5
 #  \Z^2\ltimes_{A^{-1},B} \Z^5
 #   \Z^2\ltimes_{A,AB} \Z^5.
-# Basically, we can change {A,B} for {A^{-1},B} or {A,B^{-1}} and we can also perform the sequence of operations {A,B}->{A,AB}->{A,A^2B}->{A,A^3B}->...
-# (or {A,B}->{B,AB}->...). We will try to list the powers [j,k,l,m] of the generating sets {A^j B^k, A^l B^m} in a way such that it is clear which operations
+# Basically, we can change {A,B} for {A^{-1},B} or {A,B^{-1}} and we can also perform the sequence of operations {A,B}->{A,A^k B}
+# (or {A,B}->{B,AB^k}). We will try to list the powers [j,k,l,m] of the generating sets {A^j B^k, A^l B^m} in a way such that it is clear which operations
 # we have to perform to get from one generator set to the following.
 # For instance:
 # For i in [1..9], in each case the outcome are the following powers: 
@@ -372,12 +372,22 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 {B, A^k B} can be changed for {B^5, A^k B} so we obtain:
 [ 0, 5, 1, 0 ] [ 0, 5, 1, 1 ] [ 0, 5, 1, 2 ] [ 0, 5, 1, 3 ] [ 0, 5, 1, 4 ] [ 0, 5, 1, 5 ]   
 
+[ 1, 0, 1, 1 ] {A,B} -> {A,AB}
+[ 1, 0, 1, 5 ] {A,B} -> {A,B^5} -> {A,AB^5}
+[ 1, 1, 1, 2 ] {B,A} -> {B,AB} -> {AB,AB^2}
+[ 1, 1, 1, 4 ] {AB,AB^2} ->{AB, AB^4}  (since AB^4=(AB^2)^-1)
 
-[ 0, 3, 1, 1 ] 
-[ 0, 3, 1, 2 ] [ 0, 3, 1, 4 ] [ 0, 3, 1, 5 ] {B,A} -> {B,AB
-[ 1, 0, 1, 1 ] [ 1, 0, 1, 5 ] 
-[ 1, 1, 1, 2 ] [ 1, 1, 1, 4 ]
-[ 1, 2, 1, 3 ] [ 1, 2, 1, 5 ] [ 1, 3, 1, 4 ] [ 1, 4, 1, 5 ]
+[ 0, 3, 1, 1 ] {AB,AB^2} -> {B^3,AB}
+[ 0, 3, 1, 4 ] {B^3,AB} -> {B^3,AB^4}
+[ 0, 3, 1, 2 ] {B^3,AB^4} -> {B^3,AB^2}  (since AB^4=(AB^2)^-1)
+[ 0, 3, 1, 5 ] {B^3,AB^2} -> {B^3, AB^5}
+
+[ 1, 2, 1, 5 ] {B^3, AB^5} -> {AB^2, AB^5}
+[ 1, 2, 1, 3 ] {AB^2, AB^5} -> {AB^2, AB^3}  (since (AB^2)^2*AB^5=AB^3)
+[ 1, 4, 1, 5 ] {AB^2, AB^5} -> {AB^4, AB^5} (since AB^5=(AB^2)^-1)
+
+[ 1, 3, 1, 4 ] {AB^2, AB^3} -> {AB^3, AB^4} (since AB^4=(AB^2)^-1)
+
 
 
 
@@ -411,11 +421,9 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
          [ 1, 0, 2, 1 ] {A,AB} -> {A,A^2B}
  
 
-  
 
 
-
-for i in [30] do
+for i in [36] do
           for j in [0..Order(lattices5[i][1])-1] do
           for k in [0..Order(lattices5[i][1])-1] do
           for l in [0..Order(lattices5[i][2])-1] do
