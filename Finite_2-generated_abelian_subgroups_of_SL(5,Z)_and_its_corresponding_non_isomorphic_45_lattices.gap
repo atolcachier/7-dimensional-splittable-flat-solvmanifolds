@@ -413,25 +413,52 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 [ 0, 3, 1, 1 ]  [ 0, 3, 1, 4 ]  {A, AB} -> {B^3, AB} (since A(AB)^3=B^3) -> {B^3, AB^4} 
 [ 0, 3, 3, 5 ]  [ 0, 3, 3, 2 ] (Changing second matrix for its inverse, note that (B^3)^-1=B^3)
 
+[ 0, 3, 1, 2 ] [ 0, 3, 1, 5 ] {B,AB^2} -> {B^3, AB^2} (since B(AB^2)^4=B^3) -> {B^3, AB^5}
+[ 0, 3, 3, 4 ]  [ 0, 3, 3, 1 ] (Changing second matrix for its inverse, note that (B^3)^-1=B^3)
+  
+[ 1, 2, 2, 3 ]   {AB,AB^2} ->{AB^2, A^2B^3}
+[ 3, 4, 2, 3 ]   (Changing first matrix for its inverse, note that (A^2B^3)^-1=A^2B^3)
 
+[ 1, 2, 1, 3 ]  {B,AB^3} -> {AB^2,AB^3}
+[ 3, 4, 1, 3 ] (Changing first matrix for its inverse)  
+[ 3, 4, 3, 3 ] (Changing second matrix for its inverse)
+[ 1, 2, 3, 3 ] (Changing again first matrix for its inverse)
 
+[ 1, 2, 1, 5 ]  {AB^2,AB^3} -> {AB^2, AB^5} (since (AB^2)^4*AB^3=AB^5) 
+[ 3, 4, 1, 5 ] (Changing first matrix for its inverse)
+[ 3, 4, 3, 1 ] (Changing second matrix for its inverse)
+[ 1, 2, 3, 1 ] (Changing again first matrix for its inverse)
 
-[ 0, 3, 1, 2 ] [ 0, 3, 1, 5 ]  
-[ 0, 3, 3, 4 ]  [ 0, 3, 3, 1 ]
+[ 1, 3, 1, 4 ] {B,AB^3} -> {AB^3,AB^4} 
+[ 3, 3, 1, 4 ] (Changing first matrix for its inverse)
+[ 3, 3, 3, 2 ] (Changing second matrix for its inverse)
+[ 1, 3, 3, 2 ] (Changing again first matrix for its inverse)
 
- [ 1, 2, 1, 3 ] [ 1, 2, 1, 5 ] [ 1, 3, 1, 4 ] [ 1, 4, 1, 5 ]
-[ 1, 2, 2, 1 ] [ 1, 2, 2, 3 ] [ 1, 2, 2, 5 ] [ 1, 3, 2, 1 ] [ 1, 3, 2, 5 ]
-[ 1, 4, 2, 1 ] [ 1, 4, 2, 3 ] [ 1, 4, 2, 5 ] [ 1, 5, 2, 1 ] [ 1, 5, 2, 3 ]
-[ 1, 5, 2, 5 ] 
-[ 1, 2, 3, 1 ] [ 1, 2, 3, 3 ] [ 1, 3, 3, 2 ]
-[ 1, 3, 3, 4 ] [ 1, 4, 3, 1 ] [ 1, 4, 3, 3 ]
-[ 1, 5, 3, 2 ] [ 1, 5, 3, 4 ] [ 2, 1, 3, 1 ] [ 2, 1, 3, 2 ]
-[ 2, 1, 3, 3 ] [ 2, 1, 3, 4 ] [ 2, 3, 3, 1 ] [ 2, 3, 3, 2 ]
-[ 2, 3, 3, 4 ] [ 2, 5, 3, 1 ] [ 2, 5, 3, 2 ]
-[ 2, 5, 3, 3 ] [ 2, 5, 3, 4 ]
-[ 3, 1, 3, 2 ] [ 3, 1, 3, 4 ] [ 3, 2, 3, 3 ] [ 3, 3, 3, 4 ]
+[ 1, 4, 1, 5 ] {B,AB^4} -> {AB^4,AB^5}
+[ 3, 2, 1, 5 ] (Changing first matrix for its inverse)
+[ 3, 2, 3, 1 ] (Changing second matrix for its inverse)
+[ 1, 4, 3, 1 ] (Changing again first matrix for its inverse) 
 
+[ 2, 1, 3, 1 ]  {A,A^2B} -> {A^2B,A^3B}   
+[ 2, 5, 3, 1 ] (Changing first matrix for its inverse)
+[ 2, 5, 1, 5 ] (Changing second matrix for its inverse)
+[ 2, 1, 1, 5 ] (Changing again first matrix for its inverse)
 
+[ 1, 2, 2, 1 ] [ 2, 1, 3, 3 ] {A,A^2B} -> {AB^2,A^2B} (since A(A^2B)^2=AB^2) -> {A^2B, A^3B^3}
+[ 3, 4, 2, 1 ] [ 2, 5, 3, 3 ] (Changing first matrix for its inverse)
+[ 3, 4, 2, 5 ] [ 2, 5, 1, 3 ] (Changing second matrix for its inverse)
+[ 1, 2, 2, 5 ] [ 2, 1, 1, 3 ] (Changing again first matrix for its inverse)
+
+[ 1, 4, 2, 1 ]  {A,A^2B} -> {A^2B,AB^4} (since A(A^2B)^4=AB^4)
+[ 3, 2, 2, 1 ] (Changing first matrix for its inverse)
+[ 3, 2, 2, 5 ] (Changing second matrix for its inverse)
+[ 1, 4, 2, 5 ] (Changing again first matrix for its inverse)
+
+[ 1, 5, 2, 3 ] {AB^4,AB^5} -> {AB^5, A^2B^3}
+[ 3, 1, 2, 3 ] (Changing first matrix for its inverse, note that (A^2B^3)^-1=A^2B^3)
+
+[ 1, 4, 2, 3 ] {AB^4,AB^5} -> {AB^4,A^2B^3}
+[ 3, 2, 2, 3 ] (Changing first matrix for its inverse, note that (A^2B^3)^-1=A^2B^3)
 
 # For i in [36..39] A^2=A^-1, B^5=B^-1 and in each case the outcome is the following:
 
@@ -480,10 +507,11 @@ Print([Order(lattices5[i][1]),Order(lattices5[i][2]),Order(Group(lattices5[i][1]
 [ 2, 2, 2, 1 ] (Changing second matrix for its inverse)
 [ 1, 4, 2, 1 ] (Changing again first matrix for its inverse)
 
+# For i=40, A^-1=A^5, B^-1=B^5, and in each case the outcome is the following:
 
 
 
-# For i in [41..45], A^{-1}=A^2, B^{-1}=B^2, and in each case the outcome is the following:
+# For i in [41..45], A^-1=A^2, B^-1=B^2, and in each case the outcome is the following:
 
 [ 0, 1, 1, 0 ] {B,A}
 [ 0, 1, 2, 0 ] {B,A} -> {B,A^2}
